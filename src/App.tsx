@@ -255,7 +255,7 @@ function TestimonialsStack() {
   };
 
   return (
-    <div className="grid min-h-[420px] [grid-template-areas:'stack'] place-items-center px-4 sm:min-h-[500px]">
+    <div className="grid min-h-[380px] [grid-template-areas:'stack'] place-items-center px-4 sm:min-h-[420px]">
       {testimonials.map((testimonial, index) => (
         <div
           key={testimonial.handle}
@@ -491,7 +491,7 @@ export default function App() {
       </section>
 
       {/* ── Testimonials ──────────────────────────────────────────── */}
-      <section className="py-20 px-6 bg-zinc-950 overflow-hidden">
+      <section className="pt-16 pb-0 px-6 bg-zinc-950">
         <div className="max-w-6xl mx-auto">
           <div ref={testimonialsHeaderRef} className="text-center mb-14 space-y-3 opacity-0">
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-400">Community</p>
@@ -503,9 +503,9 @@ export default function App() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────── */}
-      <section className="py-20 px-6">
+      <section className="py-4 px-6">
         <div className="max-w-2xl mx-auto">
-          <div ref={faqHeaderRef} className="text-center mb-14 space-y-3 opacity-0">
+          <div ref={faqHeaderRef} className="opacity-0">
           </div>
 
           <div ref={faqListRef} className="space-y-1">
@@ -519,7 +519,7 @@ export default function App() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────── */}
-      <section className="py-28 px-6 relative overflow-hidden">
+      <section className="pt-8 pb-16 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/10 to-transparent pointer-events-none" />
         <div ref={ctaRef} className="max-w-3xl mx-auto text-center space-y-8 opacity-0">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
