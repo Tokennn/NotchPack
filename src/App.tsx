@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Download, Github, MessageSquare, ChevronDown, CheckCircle2,
-  Bug, ExternalLink, Zap, Plus, Minus,
+  Plus, Minus,
 } from 'lucide-react';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Ferrofluid from './components/Ferrofluid';
@@ -48,29 +48,26 @@ const featureHighlights: FeatureHighlight[] = [
 
 const testimonials = [
   {
-    name: 'Alex Rivera',
-    handle: '@alexrivera',
-    avatar: 'AR',
-    text: 'NotchPack makes the MacBook notch feel useful for the first time. Music controls and battery status are exactly where I expect them.',
-    date: 'Jun 1, 2026',
+    name: 'Thomas Dupont',
+    handle: '@thomasdupont',
+    text: 'NotchPack rend enfin l\'encoche du MacBook utile. Les contrôles musicaux et l\'état de la batterie sont exactement là où je les attends.',
+    date: '1 juin 2026',
     likes: 156,
     reposts: 23,
   },
   {
-    name: 'Sarah Chen',
-    handle: '@sarahchen',
-    avatar: 'SC',
-    text: 'The interactions feel clean and native. I installed it for the music controls, then kept it for meetings and quick status checks.',
-    date: 'May 28, 2026',
+    name: 'Marie Lefebvre',
+    handle: '@marielefebvre',
+    text: 'Les interactions sont propres et natives. Je l\'ai installé pour la musique, puis je l\'ai gardé pour les réunions et les statuts rapides.',
+    date: '28 mai 2026',
     likes: 84,
     reposts: 12,
   },
   {
-    name: 'Mike Johnson',
-    handle: '@mikej_dev',
-    avatar: 'MJ',
-    text: 'Simple idea, really polished execution. The notch finally behaves like part of the interface instead of empty hardware.',
-    date: 'May 19, 2026',
+    name: 'Lucas Martin',
+    handle: '@lucasmartin_dev',
+    text: 'Idée simple, exécution vraiment soignée. L\'encoche se comporte enfin comme une partie de l\'interface plutôt qu\'un espace vide.',
+    date: '19 mai 2026',
     likes: 42,
     reposts: 8,
   },
@@ -83,13 +80,6 @@ const faqs = [
   { q: 'What features does Boring Notch offer?', a: 'Media controls, battery indicators, calendar and reminders, custom macOS HUD replacement, and a file shelf for easy drag and drop. New features ship regularly.' },
   { q: 'How does it compare to paid alternatives?', a: 'Unlike paid alternatives, Boring Notch is free and the most customizable. Being open-source means it is audited and continuously improved by the community.' },
   { q: 'Is Boring Notch resource-intensive?', a: 'Designed to be extremely lightweight and efficient. Most users report zero perceptible overhead regardless of which features they enable.' },
-];
-
-const currentBugs = [
-  'AirDrop breaking and only showing a blank box',
-  'Notch sometimes showing up in the middle of the screen',
-  'Fullscreen media hide not detecting correctly',
-  'Display selection for notch position not working',
 ];
 
 /* ─── FAQ Item ──────────────────────────────────────────────────────────── */
@@ -267,19 +257,13 @@ function TestimonialsStack() {
   return (
     <div className="grid min-h-[420px] [grid-template-areas:'stack'] place-items-center px-4 sm:min-h-[500px]">
       {testimonials.map((testimonial, index) => (
-        <a
+        <div
           key={testimonial.handle}
-          href="https://github.com/Tokennn"
-          target="_blank"
-          rel="noopener noreferrer"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
           className={`relative flex min-h-[170px] w-[280px] -skew-y-[8deg] select-none flex-col rounded-2xl border border-white/10 bg-zinc-950/95 px-4 py-4 text-left shadow-2xl backdrop-blur-sm transition-all duration-500 hover:border-white/25 hover:bg-zinc-900 sm:min-h-[190px] sm:w-[380px] ${stackClasses[index]}${shiftedClass(index)}`}
         >
           <div className="mb-3 flex items-start gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 via-cyan-400 to-teal-400 text-sm font-bold text-black sm:h-12 sm:w-12">
-              {testimonial.avatar}
-            </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1">
                 <span className="truncate text-sm font-bold text-white sm:text-base">{testimonial.name}</span>
@@ -301,7 +285,7 @@ function TestimonialsStack() {
               <span>{testimonial.reposts} reposts</span>
             </div>
           </div>
-        </a>
+        </div>
       ))}
     </div>
   );
@@ -377,7 +361,6 @@ export default function App() {
   const featuresHeaderRef = useRef<HTMLDivElement>(null);
   const featuresGridRef = useRef<HTMLDivElement>(null);
   const installRef = useRef<HTMLDivElement>(null);
-  const bugRef = useRef<HTMLDivElement>(null);
   const testimonialsHeaderRef = useRef<HTMLDivElement>(null);
   const faqHeaderRef = useRef<HTMLDivElement>(null);
   const faqListRef = useRef<HTMLDivElement>(null);
@@ -398,7 +381,6 @@ export default function App() {
   useReveal(featuresHeaderRef as React.RefObject<HTMLElement>);
   useStagger(featuresGridRef as React.RefObject<HTMLElement>, '.feature-chat-item', 0.1);
   useReveal(installRef as React.RefObject<HTMLElement>);
-  useReveal(bugRef as React.RefObject<HTMLElement>);
   useReveal(testimonialsHeaderRef as React.RefObject<HTMLElement>);
   useReveal(faqHeaderRef as React.RefObject<HTMLElement>);
   useStagger(faqListRef as React.RefObject<HTMLElement>, '.faq-item');
@@ -412,10 +394,8 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 nav-blur">
         <div className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
-              <div className="w-2 h-2 bg-black rounded-full" />
-            </div>
-            <span className="text-sm font-semibold tracking-tight">boring.notch</span>
+            <img src="/icon.png" alt="NotchPack" className="w-6 h-6 rounded-md" />
+            <span className="text-sm font-semibold tracking-tight">NotchPack</span>
           </div>
           <div className="flex items-center gap-3">
             <a href="https://github.com/Tokennn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors">
@@ -507,61 +487,6 @@ export default function App() {
       <section className="py-20 px-6 bg-zinc-950">
         <div ref={installRef} className="opacity-0">
           <InstallationHighlightCard />
-        </div>
-      </section>
-
-      {/* ── Bug Report ────────────────────────────────────────────── */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div ref={bugRef} className="grid md:grid-cols-2 gap-6 opacity-0">
-            <div className="glass rounded-3xl p-8 space-y-6">
-              <div className="w-10 h-10 bg-rose-400/10 rounded-xl flex items-center justify-center">
-                <Bug size={18} className="text-rose-400" />
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-2xl font-bold tracking-tight">Found a bug?</h2>
-                <p className="text-zinc-400 text-sm leading-relaxed">Help us sharpen the experience. GitHub Issues is the best way to report — it lets us track and resolve efficiently.</p>
-              </div>
-              <div className="space-y-2 text-sm text-zinc-400">
-                <p className="font-medium text-white text-xs uppercase tracking-widest mb-3">Before you report</p>
-                {[
-                  'Check if the issue has already been reported',
-                  'Include your macOS version and Mac model',
-                  'Describe steps to reproduce with screenshots',
-                  'Mention the Boring Notch version you\'re using',
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <CheckCircle2 size={13} className="text-green-400 mt-0.5 shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <a href="https://github.com/Tokennn" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium">
-                <ExternalLink size={13} />Create an issue on GitHub
-              </a>
-            </div>
-
-            <div className="glass rounded-3xl p-8 space-y-6">
-              <div className="w-10 h-10 bg-yellow-400/10 rounded-xl flex items-center justify-center">
-                <Zap size={18} className="text-yellow-400" />
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-2xl font-bold tracking-tight">Known issues</h2>
-                <p className="text-zinc-400 text-sm leading-relaxed">We track everything in the open. Here's what's on our radar right now.</p>
-              </div>
-              <ul className="space-y-3">
-                {currentBugs.map((bug, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/70 mt-2 shrink-0" />
-                    <span className="text-sm text-zinc-300">{bug}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="https://github.com/Tokennn" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium">
-                <Github size={13} />More on GitHub
-              </a>
-            </div>
-          </div>
         </div>
       </section>
 
