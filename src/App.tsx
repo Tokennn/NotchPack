@@ -454,7 +454,7 @@ export default function App() {
 
             <div ref={heroCtaRef} className="opacity-0 flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <a href="/NotchPack.dmg" className="btn-primary flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold">
-                <Download size={15} />Download for macOS
+                <Download size={15} />Download for macOS 👍
               </a>
               <a href="https://github.com/Tokennn" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 px-7 py-3 rounded-full text-sm font-medium">
                 <Github size={15} />View on GitHub
